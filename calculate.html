@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Calculator</title>
+<style>
+label
+{
+border:1px solid black;
+padding:10px;
+display:inline-block;
+width:20px;
+text-align:center;
+cursor:pointer;
+}
+#display {
+    width:300px;
+    height: 50px;
+    border: 2px solid black;
+    font-size: 25px;
+    text-align: right;
+    box-sizing: border-box;
+}
+</style>
+</head>
+<h1>Simple Calculator</h1>
+<input type="text" id="display" readonly><br>
+<label>AC</label>
+<label>%</label>
+<label>⌫</label>
+<label>/</label><br>
+<label>7</label>
+<label>8</label>
+<label>9</label>
+<label>*</label><br>
+<label>4</label>
+<label>5</label>
+<label>6</label>
+<label>-</label><br>
+<label>1</label>
+<label>2</label>
+<label>3</label>
+<label>+</label><br>
+<label>00</label>
+<label>0</label>
+<label>.</label>
+<label>=</label>
+<script>
+let expression = "";
+document.querySelectorAll("label").forEach(function(label) {
+    label.addEventListener("click", function() {
+        let value = label.textContent;
+        if (value === "AC") {
+            expression = "";         
+        }
+        // Equals
+        else if (value === "⌫") {
+            expression = expression.slice(0,-1);
+        }
+        else if(value === "="){
+            expression = eval(expression); 
+        }
+		   else{
+		   expression = expression+value;
+		   }
+		   document.getElementById("display").value = expression;
+document.getElementById("display").scrollLeft =
+    document.getElementById("display").scrollWidth;
+    });
+});
+</script>
+</body>
+</html>
